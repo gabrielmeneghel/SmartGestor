@@ -4,20 +4,17 @@
   <input type="submit" value="Buscar" name="ok">
 </form>
 <?php
-$host = 'localhost'; // endereço do seu mysql
-$user = 'root'; // usuário
-$pass = ''; // senha
-$con = mysql_connect($host,$user,$pass); // função de conexão
-$db = 'sistema_estoque'; // nome do banco de dados
-mysql_select_db($db,$con) or print mysql_error(); // seleção do banco de dados
+$host = 'localhost'; 
+$user = 'root'; 
+$pass = ''; 
+$con = mysql_connect($host,$user,$pass); 
+$db = ''; 
+mysql_select_db($db,$con) or print mysql_error(); 
 $busca=$_POST['busca'];
 if(empty($busca)) die;
-$sql = mysql_query("SELECT * FROM produtos WHERE nome LIKE '%$busca%' OR cod LIKE '%$busca%'");
-// query para selecionar todos os campos da tabela usuários se $busca contiver na coluna nome ou na coluna email
-// % antes e depois de $busca serve para indicar que $busca por ser apenas parte da palavra ou frase
-// $busca é a variável que foi enviada pelo nosso formulário da página anterior
+$sql = mysql_query("SELECT * FROM product WHERE nome LIKE '%$busca%' OR cod LIKE '%$busca%'");
+
 $count = mysql_num_rows($sql);
-// conta quantos registros enc﻿ontrados com a nossa especificação
 if ($count == 0) {
     echo "Nenhum resultado!";
 } else {
